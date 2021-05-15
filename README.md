@@ -17,6 +17,10 @@ The code runs correctly with
 * PyTorch 1.2
 * Torchvision 0.4
 
+```shell
+pip install ordered_set
+```
+
 ## How to run
 
 ```bash
@@ -26,6 +30,14 @@ cd AGAM/models/agam_protonet
 
 # download data and run on multiple GPUs with special settings
 python train.py --train-data [train_data] --test-data [test_data] --backbone [backbone] --num-shots [num_shots] --train-tasks [train_tasks] --semantic-type [semantic_type] --multi-gpu --download
+
+
+# Example: run on CUB dataset, Conv-4 backbone, 1 shot, single GPU (First time training with --download to get the dataset)
+python train.py --train-data cub --test-data cub --backbone conv4 --num-shots 1 --train-tasks 50000 --semantic-type class_attributes --download
+# Example: run on SUN dataset, ResNet-12 backbone, 5 shot, multiple GPUs (First time training with --download to get the dataset)
+python train.py --train-data sun --test-data sun --backbone resnet12 --num-shots 5 --train-tasks 40000  --semantic-type image_attributes --multi-gpu --download
+
+# If you have downloaded the dataset, use the command below:
 
 # Example: run on CUB dataset, Conv-4 backbone, 1 shot, single GPU
 python train.py --train-data cub --test-data cub --backbone conv4 --num-shots 1 --train-tasks 50000 --semantic-type class_attributes
