@@ -16,11 +16,13 @@ pip install ordered_set
 
 ## Custom CUB attribute script
 
-在datasets的assets/cub/attributes資料夾底下各別執行以下兩個程式後，可取得自定義的attribute size(例如把CUB的312變成剩下156、50、6)
+在datasets的assets/cub/attributes資料夾底下的ipynb程式後，可取得自定義的attribute size(例如把CUB的312變成剩下156、50、6)
 
-[create_class_attribute_labels_continuous_file.py](https://github.com/e96031413/AGAM/blob/master/datasets/assets/cub/attributes/create_class_attribute_labels_continuous_file.py)
+class_attribute_labels_continuous.txt和image_attribute_labels.txt兩種
 
-[create_image_attribute_labels_file.py](https://github.com/e96031413/AGAM/blob/master/datasets/assets/cub/attributes/create_image_attribute_labels_file.py)
+由於有3種不同的attribute size，因此會有(2x3=6個檔案)、預先建立好的檔案在[semantic_attributes_with_fewer_att_size.zip](https://github.com/e96031413/AGAM/blob/master/datasets/assets/cub/attributes/semantic_attributes_with_fewer_att_size.zip)
+
+[create_dataset_with_fewer_semantic_attribute.ipynb](https://github.com/e96031413/AGAM/blob/master/datasets/assets/cub/attributes/create_dataset_with_fewer_semantic_attribute.ipynb)
 
 ## Train CUB with the custom attribute script
 
