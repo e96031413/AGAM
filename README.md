@@ -21,6 +21,14 @@ The code runs correctly with
 pip install ordered_set
 ```
 
+## Custom CUB attribute script
+
+[create_class_attribute_labels_continuous_file.py](https://github.com/e96031413/AGAM/blob/master/create_class_attribute_labels_continuous_file.py)
+
+[create_image_attribute_labels_file.py](https://github.com/e96031413/AGAM/blob/master/create_image_attribute_labels_file.py)
+
+
+
 ## How to run
 
 ```bash
