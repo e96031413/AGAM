@@ -1,13 +1,6 @@
 # Attributes-Guided and Pure-Visual Attention Alignment for Few-Shot Recognition
 
-PyTorch implementation of the paper:
-
-* **Title**: Attributes-Guided and Pure-Visual Attention Alignment for Few-Shot Recognition
-* **Author**: [Siteng Huang](https://kyonhuang.top/), Min Zhang, Yachen Kang, Donglin Wang
-* **Conference**: Proceedings of the 35th AAAI Conference on Artificial Intelligence (AAAI 2021)
-* **More details**: [[arXiv]](https://arxiv.org/abs/2009.04724) | [[homepage]](https://kyonhuang.top/publication/attributes-guided-attention-module)
-
-![](https://kyonhuang.top/files/AGAM/AGAM-model-structure.png)
+修改[train.py](https://github.com/e96031413/AGAM/blob/master/models/agam/train.py#L97)中，第97行的num-workers改成8，訓練速度會更快一點，請依照CPU性能調整。
 
 ## Requirements
 
@@ -23,11 +16,48 @@ pip install ordered_set
 
 ## Custom CUB attribute script
 
-[create_class_attribute_labels_continuous_file.py](https://github.com/e96031413/AGAM/blob/master/create_class_attribute_labels_continuous_file.py)
+在datasets的assets/cub/attributes資料夾底下各別執行以下兩個程式後，可取得自定義的attribute size(例如把CUB的312變成剩下156、50、6)
 
-[create_image_attribute_labels_file.py](https://github.com/e96031413/AGAM/blob/master/create_image_attribute_labels_file.py)
+[create_class_attribute_labels_continuous_file.py](https://github.com/e96031413/AGAM/blob/master/datasets/assets/cub/attributes/create_class_attribute_labels_continuous_file.py)
 
+[create_image_attribute_labels_file.py](https://github.com/e96031413/AGAM/blob/master/datasets/assets/cub/attributes/create_image_attribute_labels_file.py)
 
+## Train CUB with the custom attribute script
+
+* 每次用不同attribute size時都要記得修改以下內容：
+
+1. 修改[AGAM/global_utils.py](https://github.com/e96031413/AGAM/blob/master/global_utils.py#L100)的第100行，把312依據自己的設定改成(156、50、6)
+
+2. 根據[create_class_attribute_labels_continuous_file.py](https://github.com/e96031413/AGAM/blob/master/datasets/assets/cub/attributes/create_class_attribute_labels_continuous_file.py)
+所產生的檔案名稱，修改[AGAM/torchmeta/datasets/semantic.py](https://github.com/e96031413/AGAM/blob/master/torchmeta/datasets/semantic.py#L127)第127行的class_attribute_filename_labels內容
+
+3. 根據[create_image_attribute_labels_file.py](https://github.com/e96031413/AGAM/blob/master/datasets/assets/cub/attributes/create_image_attribute_labels_file.py)所產生的檔案名稱，修改[AGAM/torchmeta/datasets/semantic.py](https://github.com/e96031413/AGAM/blob/master/torchmeta/datasets/semantic.py#L129)第129行的image_attribute_filename_labels內容
+
+4. 除此之外，也要修改[AGAM/torchmeta/datasets/semantic.py](https://github.com/e96031413/AGAM/blob/master/torchmeta/datasets/semantic.py#L131)第131行的attributes_dim內容
+
+範例(156為例)：
+```python
+class CUBClassDataset(ClassDataset):
+    folder = 'cub'
+
+    # Google Drive ID from http://www.vision.caltech.edu/visipedia-data/CUB-200-2011/CUB_200_2011.tgz
+    gdrive_id = '1hbzc_P1FuxMkcabkgn9ZKinBwW683j45'
+    tgz_filename = 'CUB_200_2011.tgz'
+    tgz_md5 = '97eceeb196236b17998738112f37df78'
+    image_folder = 'CUB_200_2011/images'
+
+    filename = '{0}_data.hdf5'
+    filename_labels = '{0}_labels.json'
+
+    assets_dir = 'assets'
+    text_dir = 'text_c10'
+    attribute_dir = 'attributes'
+    class_attribute_filename_labels = 'class_attribute_labels_continuous_156.txt'  #改成156
+    image_id_name_filename = 'images.txt'
+    image_attribute_filename_labels = 'image_attribute_labels_156.txt'   #改成156
+    classes_filename = 'classes.txt'
+    attributes_dim = 156                     #312改成156
+```
 
 ## How to run
 
