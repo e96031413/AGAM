@@ -35,7 +35,7 @@ pip install ordered_set
 
 4. 除此之外，也要修改[AGAM/torchmeta/datasets/semantic.py](https://github.com/e96031413/AGAM/blob/master/torchmeta/datasets/semantic.py#L131)第131行的attributes_dim內容
 
-範例(156為例)：
+* 範例(156為例)：
 ```python
 class CUBClassDataset(ClassDataset):
     folder = 'cub'
@@ -99,24 +99,3 @@ You can download datasets automatically by adding `--download` when running the 
 2. Download the archive of images from [here](http://cs.brown.edu/~gmpatter/Attributes/SUNAttributeDB_Images.tar.gz), and put the archive into `AGAM/datasets/sun`;
 3. Download the archive of attributes from [here](http://cs.brown.edu/~gmpatter/Attributes/SUNAttributeDB.tar.gz), and put the archive into `AGAM/datasets/sun`;
 4. Running the program with `--download`.
-
-## Citation
-
-If our code is helpful for your research, please cite our paper:
-
-```
-@inproceedings{Huang2021AGAM,
-  author = {Siteng Huang and Min Zhang and Yachen Kang and Donglin Wang},
-  title = {Attributes-Guided and Pure-Visual Attention Alignment for Few-Shot Recognition},
-  booktitle = {Proceedings of the 35th AAAI Conference on Artificial Intelligence (AAAI 2021)},
-  month = {February},
-  year = {2021}
-}
-```
-
-## Acknowledgement
-
-Our code references the following projects:
-
-* [Torchmeta](https://github.com/tristandeleu/pytorch-meta)
-* [FEAT](https://github.com/Sha-Lab/FEAT)
