@@ -32,6 +32,20 @@ class_attribute_labels_continuous.txt和image_attribute_labels.txt兩種
 
 1. 修改[AGAM/global_utils.py](https://github.com/e96031413/AGAM/blob/master/global_utils.py#L100)的第100行，把312依據自己的設定改成(156、50、6)
 
+* 範例(156為例)：
+
+```python
+def get_semantic_size(args):
+
+    semantic_size_list = []
+
+    for semantic_type in args.semantic_type:
+
+        if semantic_type == 'class_attributes':
+            if args.train_data == 'cub':
+                semantic_size_list.append(156)    #改成156
+```
+
 2. 根據[create_class_attribute_labels_continuous_file.py](https://github.com/e96031413/AGAM/blob/master/datasets/assets/cub/attributes/create_class_attribute_labels_continuous_file.py)
 所產生的檔案名稱，修改[AGAM/torchmeta/datasets/semantic.py](https://github.com/e96031413/AGAM/blob/master/torchmeta/datasets/semantic.py#L127)第127行的class_attribute_filename_labels內容
 
