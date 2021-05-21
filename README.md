@@ -24,6 +24,8 @@ class_attribute_labels_continuous.txt和image_attribute_labels.txt兩種
 
 [create_dataset_with_fewer_semantic_attribute.ipynb](https://github.com/e96031413/AGAM/blob/master/datasets/assets/cub/attributes/create_dataset_with_fewer_semantic_attribute.ipynb)
 
+這個notebook提供了兩種模式：(1)指定前N個attribute(例如前6個attribute)。(2)指定隨機6個attribute(隨機刪除attribute只保留6個attribute)
+
 ## Train CUB with the custom attribute script
 
 * 每次用不同attribute size時都要記得修改以下內容：
