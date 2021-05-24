@@ -2,6 +2,10 @@
 
 修改[train.py](https://github.com/e96031413/AGAM/blob/master/models/agam/train.py#L97)中，第97行的num-workers改成8，訓練速度會更快一點，請依照CPU性能調整。
 
+不使用attributes-guided的程式碼[agam/model.py](https://github.com/e96031413/AGAM/blob/master/models/agam/model.py#L143)
+
+參考[Question on training without attribute in 4.4. Ablation Study on Using Attributes #3](https://github.com/bighuang624/AGAM/issues/3)
+
 ## Requirements
 
 The code runs correctly with
