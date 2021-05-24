@@ -138,3 +138,23 @@ class ProtoNetAGAM(nn.Module):
                 return embeddings.view(*inputs.shape[:2], -1), ca_weights, sa_weights
 
         return embeddings.view(*inputs.shape[:2], -1)
+
+
+# 不使用 attributes-guided的程式碼
+class ProtoNetAGAMwoAttr(nn.Module):
+    def __init__(self, backbone, semantic_size, out_channels):
+        super(ProtoNetAGAMwoAttr, self).__init__()
+        self.encoder = get_backbone(backbone)
+
+        self.ca_block = CABlock(out_channels)
+        self.sa_block = SABlock()
+
+    def forward(self, inputs):
+
+        embeddings = self.encoder(inputs.view(-1, *inputs.shape[2:]))
+        ca_embeddings, ca_weights = self.ca_block(embeddings)
+        embeddings = ca_embeddings
+        sa_embeddings, sa_weights = self.sa_block(embeddings)
+        embeddings = sa_embeddings
+
+        return embeddings.view(*inputs.shape[:2], -1)
