@@ -2,9 +2,29 @@
 
 修改[train.py](https://github.com/e96031413/AGAM/blob/master/models/agam/train.py#L97)中，第97行的num-workers改成8，訓練速度會更快一點，請依照CPU性能調整。
 
-不使用attributes-guided的程式碼[agam/model.py](https://github.com/e96031413/AGAM/blob/master/models/agam/model.py#L143)
+不使用attributes-guided的程式碼[agam/model.py](https://github.com/e96031413/AGAM/blob/master/models/agam/model.py#L143)、[train_wo_attribute.py](https://github.com/e96031413/AGAM/blob/master/models/agam/train_wo_attribute.py)、[使用attribute與不使用attribute的train.py差異](https://www.diffchecker.com/qUT2FvRP)
+
+在train_wo_attribute.py當中:
+- Line 17 新增```from model import ProtoNetAGAM, ProtoNetAGAMwoAttr```
+- Line 47 新增```torch.backends.cudnn.enabled = False```，避免```cuDNN error: CUDNN_STATUS_NOT_SUPPORTED. This error may appear if you passed```
+- Line 150 新增```model = ProtoNetAGAMwoAttr(args.backbone, args.semantic_size, args.out_channels)```
+
+**training的部份：**
+
+- Line 239 改成```support_embeddings, ca_weights, sa_weights = model(support_inputs, semantics=support_semantics, output_weights=True)```，原本的code會有semantic的feature，這邊只剩下image的feature
+- Line 240 原本還有```addition_loss = get_addition_loss(ca_weights, sca_weights, sa_weights, ssa_weights, args)```，但是因為不使用attribute後，addition loss中的semantic weight也沒有幫助，所以就移除了
+- Line 248 變成```del ca_weights, sa_weights```，原本有semantic的weight，這邊也移除
+
+**val的部份：**
+
+- Line 271 改成```support_embeddings, ca_weights, sa_weights = model(support_inputs, semantics=support_semantics, output_weights=True)```，原本的code會有semantic的feature，這邊只剩下image的feature
+- Line 272 原本還有```addition_loss = get_addition_loss(ca_weights, sca_weights, sa_weights, ssa_weights, args)```，但是因為不使用attribute後，addition loss中的semantic weight也沒有幫助，所以就移除了
+- Line 280 變成```del ca_weights, sa_weights```，原本有semantic的weight，這邊也移除
 
 參考[Question on training without attribute in 4.4. Ablation Study on Using Attributes #3](https://github.com/bighuang624/AGAM/issues/3)
+
+參考[[訓練報錯]cuDNN error: CUDNN_STATUS_NOT_SUPPORTED.](https://blog.csdn.net/qq_22764813/article/details/108419648)
+
 
 ## Requirements
 
