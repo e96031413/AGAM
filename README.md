@@ -125,6 +125,13 @@ python train.py --train-data cub --test-data cub --backbone conv4 --num-shots 1 
 python train.py --train-data sun --test-data sun --backbone resnet12 --num-shots 5 --train-tasks 40000  --semantic-type image_attributes --multi-gpu
 ```
 
+### 從中斷的model繼續進行訓練
+```
+python train.py --train-data cub --test-data cub --backbone conv4 --num-shots 1 --train-tasks 50000 --semantic-type class_attributes --resume --resume-folder checkpoint資料夾路徑
+
+# 例如：
+python train.py --train-data cub --test-data cub --backbone conv4 --num-shots 1 --train-tasks 50000 --semantic-type class_attributes --resume --resume-folder no_attribute_cub_cub_protonet_agam_conv4_2021-05-27-17-59-38
+```
 ### Data Preparation
 
 You can download datasets automatically by adding `--download` when running the program. However, here we give steps to manually download datasets to prevent problems such as poor network connection:
