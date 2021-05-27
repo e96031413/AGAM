@@ -323,7 +323,7 @@ if __name__ == '__main__':
 
                 test_loss = prototypical_loss(prototypes, query_embeddings, query_targets)
                 test_acc = get_proto_accuracy(prototypes, query_embeddings, query_targets)
-                del ca_weights, sca_weights, sa_weights, ssa_weights
+                del ca_weights, sa_weights
 
                 pbar.set_postfix(test_acc='{0:.4f}'.format(test_acc.item()))
 
