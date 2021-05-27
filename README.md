@@ -1,5 +1,7 @@
 # Attributes-Guided and Pure-Visual Attention Alignment for Few-Shot Recognition
 
+程式碼本身包含training和testing
+
 修改[train.py](https://github.com/e96031413/AGAM/blob/master/models/agam/train.py#L97)中，第97行的num-workers改成8，訓練速度會更快一點，請依照CPU性能調整。
 
 不使用attributes-guided的程式碼[agam/model.py](https://github.com/e96031413/AGAM/blob/master/models/agam/model.py#L143)、[train_wo_attribute.py](https://github.com/e96031413/AGAM/blob/master/models/agam/train_wo_attribute.py)、[使用attribute與不使用attribute的train.py差異](https://www.diffchecker.com/sv6TWcM6)
@@ -129,6 +131,9 @@ python train.py --train-data sun --test-data sun --backbone resnet12 --num-shots
 python train.py --train-data cub --test-data cub --backbone conv4 --num-shots 1 --train-tasks 50000 --semantic-type class_attributes
 # Example: run on SUN dataset, ResNet-12 backbone, 5 shot, multiple GPUs
 python train.py --train-data sun --test-data sun --backbone resnet12 --num-shots 5 --train-tasks 40000  --semantic-type image_attributes --multi-gpu
+
+# 進行無attribute的訓練
+python train_wo_attribute.py --train-data cub --test-data cub --backbone conv4 --num-shots 1 --train-tasks 50000 --semantic-type class_attributes
 ```
 
 ### 從中斷的model繼續進行訓練
