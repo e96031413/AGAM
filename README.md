@@ -46,6 +46,8 @@ The code runs correctly with
 pip install ordered_set
 pip install tqdm
 pip install pandas
+pip install h5py
+pip install scipy
 ```
 
 ## Custom CUB attribute script
