@@ -44,6 +44,8 @@ The code runs correctly with
 
 ```shell
 pip install ordered_set
+pip install tqdm
+pip install pandas
 ```
 
 ## Custom CUB attribute script
