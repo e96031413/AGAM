@@ -43,6 +43,8 @@ The code runs correctly with
 * Torchvision 0.4
 
 ```shell
+pip install torch==1.2.0 torchvision==0.4.0
+
 pip install ordered_set
 pip install tqdm
 pip install pandas
