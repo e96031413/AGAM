@@ -120,7 +120,7 @@ class CUBClassDataset(ClassDataset):
 ```bash
 # clone project
 git clone https://github.com/bighuang624/AGAM.git
-cd AGAM/models/agam_protonet
+cd AGAM/models/agam
 
 # download data and run on multiple GPUs with special settings
 python train.py --train-data [train_data] --test-data [test_data] --backbone [backbone] --num-shots [num_shots] --train-tasks [train_tasks] --semantic-type [semantic_type] --multi-gpu --download
