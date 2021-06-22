@@ -84,7 +84,7 @@ def get_semantic_size(args):
                 semantic_size_list.append(156)    #改成156
 ```
 
-2. 根據[create_class_attribute_labels_continuous_file.py](https://github.com/e96031413/AGAM/blob/master/datasets/assets/cub/attributes/create_class_attribute_labels_continuous_file.py)
+2. 根據[create_dataset_with_fewer_semantic_attribute.ipynb](https://github.com/e96031413/AGAM/blob/master/datasets/assets/cub/attributes/create_dataset_with_fewer_semantic_attribute.ipynb)
 所產生的檔案名稱，修改[AGAM/torchmeta/datasets/semantic.py](https://github.com/e96031413/AGAM/blob/master/torchmeta/datasets/semantic.py#L127)第127行的class_attribute_filename_labels內容
 
 3. 根據[create_image_attribute_labels_file.py](https://github.com/e96031413/AGAM/blob/master/datasets/assets/cub/attributes/create_image_attribute_labels_file.py)所產生的檔案名稱，修改[AGAM/torchmeta/datasets/semantic.py](https://github.com/e96031413/AGAM/blob/master/torchmeta/datasets/semantic.py#L129)第129行的image_attribute_filename_labels內容
